@@ -6,78 +6,78 @@ from django.contrib.auth.models import User
 
 class VistoriaSerializer(serializers.Serializer):
 
-    id = serializers.IntegerField(required = True)
+    id = serializers.IntegerField(required = False)
 
     #tem como fazer com choice
-    cobrad = serializers.CharField(required=True, allow_blank=False, max_length=200)
-    municipio = serializers.CharField(required=True, allow_blank=False, max_length=200)
+    cobrad = serializers.CharField(required=False, allow_blank=False, max_length=200)
+    municipio = serializers.CharField(required=False, allow_blank=False, max_length=200)
     #tem como fazer com choice
 
     descricao = serializers.CharField()
-    data = serializers.DateTimeField()
+    data = serializers.CharField()
     endereco = serializers.CharField()
     #latitude e longitude com FloatField ou DecimalField?
 
     #Danos humanos:
 
-    danos_humanos_desalojados = serializers.IntegerField(required=True)
-    danos_humanos_desabrigados = serializers.IntegerField(required=True)
-    danos_humanos_desaparecidos = serializers.IntegerField(required=True)
-    danos_humanos_feridos = serializers.IntegerField(required=True)
-    danos_humanos_enfermos = serializers.IntegerField(required=True)
-    danos_humanos_mortos = serializers.IntegerField(required=True)
-    danos_humanos_isolados = serializers.IntegerField(required=True)
-    danos_humanos_atingidos = serializers.IntegerField(required=True)
-    danos_humanos_afetados = serializers.IntegerField(required=True)
+    danos_humanos_desalojados = serializers.IntegerField(required=False)
+    danos_humanos_desabrigados = serializers.IntegerField(required=False)
+    danos_humanos_desaparecidos = serializers.IntegerField(required=False)
+    danos_humanos_feridos = serializers.IntegerField(required=False)
+    danos_humanos_enfermos = serializers.IntegerField(required=False)
+    danos_humanos_mortos = serializers.IntegerField(required=False)
+    danos_humanos_isolados = serializers.IntegerField(required=False)
+    danos_humanos_atingidos = serializers.IntegerField(required=False)
+    danos_humanos_afetados = serializers.IntegerField(required=False)
 
     danos_humanos_observacoes = serializers.CharField()
 
     #Danos materiais:
 
-    unidades_habitacionais_atingidas = serializers.IntegerField(required=True)
-    unidades_habitacionais_danificads = serializers.IntegerField(required=True)
-    unidades_habitacionais_interditadas = serializers.IntegerField(required=True)
-    unidades_habitacionais_destruidas = serializers.IntegerField(required=True)
-    instalacoes_publicas_saude_atingidas = serializers.IntegerField(required=True)
-    instalacoes_publicas_ensino_atingidas = serializers.IntegerField(required=True)
-    instalacoes_comunitarias_atingidas = serializers.IntegerField(required=True)
-    obras_atingidas = serializers.IntegerField(required=True)
-    interrupcoes_servicos_essenciais = serializers.IntegerField(required=True)
+    unidades_habitacionais_atingidas = serializers.IntegerField(required=False)
+    unidades_habitacionais_danificads = serializers.IntegerField(required=False)
+    unidades_habitacionais_interditadas = serializers.IntegerField(required=False)
+    unidades_habitacionais_destruidas = serializers.IntegerField(required=False)
+    instalacoes_publicas_saude_atingidas = serializers.IntegerField(required=False)
+    instalacoes_publicas_ensino_atingidas = serializers.IntegerField(required=False)
+    instalacoes_comunitarias_atingidas = serializers.IntegerField(required=False)
+    obras_atingidas = serializers.IntegerField(required=False)
+    interrupcoes_servicos_essenciais = serializers.IntegerField(required=False)
 
-    danos_materiais_observacoes = serializers.CharField()
+    danos_materiais_observacoes = serializers.CharField(required=False)
 
     #Danos ambientais:
 
-    contaminacao_solo = serializers.IntegerField(required=True)
-    contaminacao_agua = serializers.IntegerField(required=True)
-    contaminacao_ar = serializers.IntegerField(required=True)
+    contaminacao_solo = serializers.IntegerField(required=False)
+    contaminacao_agua = serializers.IntegerField(required=False)
+    contaminacao_ar = serializers.IntegerField(required=False)
 
     danos_ambientais_observacoes = serializers.CharField()
 
     #Danos econômicos:
 
-    danos_agricultura = serializers.IntegerField(required=True)
-    danos_pecuaria = serializers.IntegerField(required=True)
-    danos_industria = serializers.IntegerField(required=True)
-    danos_comercio = serializers.IntegerField(required=True)
-    danos_prestacao_de_servicos = serializers.IntegerField(required=True)
+    danos_agricultura = serializers.IntegerField(required=False)
+    danos_pecuaria = serializers.IntegerField(required=False)
+    danos_industria = serializers.IntegerField(required=False)
+    danos_comercio = serializers.IntegerField(required=False)
+    danos_prestacao_de_servicos = serializers.IntegerField(required=False)
 
     danos_economicos_observacoes = serializers.CharField()
 
     #IAH
 
-    iah_cestas_de_alimentos = serializers.IntegerField(required=True)
-    iah_agua_potavel = serializers.IntegerField(required=True)
-    iah_colchoes = serializers.IntegerField(required=True)
-    iah_kit_higiene_pessoal = serializers.IntegerField(required=True)
-    iah_kit_limpeza = serializers.IntegerField(required=True)
-    iah_telhas = serializers.IntegerField(required=True)
-    iah_lona_plastica = serializers.IntegerField(required=True)
-    iah_outros = serializers.IntegerField(required=True)
+    iah_cestas_de_alimentos = serializers.IntegerField(required=False)
+    iah_agua_potavel = serializers.IntegerField(required=False)
+    iah_colchoes = serializers.IntegerField(required=False)
+    iah_kit_higiene_pessoal = serializers.IntegerField(required=False)
+    iah_kit_limpeza = serializers.IntegerField(required=False)
+    iah_telhas = serializers.IntegerField(required=False)
+    iah_lona_plastica = serializers.IntegerField(required=False)
+    iah_outros = serializers.IntegerField(required=False)
 
     iah_fornecidos_outros_observacoes = serializers.CharField()
-    iah_vias_publicas_totalmente_desobistruidas = serializers.BooleanField(required=True)
-    iah_reestabelecimento_servicos_essenciais = serializers.BooleanField(required=True)
+    iah_vias_publicas_totalmente_desobistruidas = serializers.BooleanField(required=False)
+    iah_reestabelecimento_servicos_essenciais = serializers.BooleanField(required=False)
 
     def create(self, validated_data):
         """

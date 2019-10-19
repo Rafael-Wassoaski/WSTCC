@@ -10,6 +10,7 @@ from rest_framework import status
 from rest_framework import permissions
 from rest_framework.decorators import api_view, permission_classes
 import json
+from django.core import serializers
 
 # Create your views here.
 @csrf_exempt
@@ -46,10 +47,11 @@ def cadastrovistoria(request):
 		return JsonResponse(jason, safe=False)
 
 	if request.method == 'POST':
-		data = JSONParser().parse(request)	
-		serializer = VistoriaSerializer(data=data)
-		if serializer.is_valid():
-			print(serializer)
-			serializer.save()
-			return JsonResponse(serializer.data)
+		data = json.loads(request.body.decode("utf-8"))
+		print(data)
+		#serializer = VistoriaSerializer(data=data)
+		#if serializer.is_valid():
+		#	print(serializer)
+		#	serializer.save()
+		#	return JsonResponse(serializer.data)
 		return JsonResponse(serializer.errors, status=400)
