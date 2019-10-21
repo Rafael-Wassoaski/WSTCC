@@ -11,6 +11,7 @@ from rest_framework import permissions
 from rest_framework.decorators import api_view, permission_classes
 import json
 from django.core import serializers
+from django.contrib.auth.models import User
 
 # Create your views here.
 @csrf_exempt
@@ -34,8 +35,8 @@ def loginmobile(request):
 
 
 
-@api_view(['POST', 'GET'])
-@permission_classes((permissions.AllowAny,))	
+
+@csrf_exempt
 def cadastrovistoria(request):
 
 	if request.method == 'GET':
@@ -47,11 +48,11 @@ def cadastrovistoria(request):
 		return JsonResponse(jason, safe=False)
 
 	if request.method == 'POST':
-		data = json.loads(request.body.decode("utf-8"))
-		print(data)
-		#serializer = VistoriaSerializer(data=data)
-		#if serializer.is_valid():
-		#	print(serializer)
-		#	serializer.save()
-		#	return JsonResponse(serializer.data)
-		return JsonResponse(serializer.errors, status=400)
+		data = json.loads(request.body.decode("UTF-8"))
+		user = User.objects.get(id = data.get('autor'))
+		serializerVistoria = VistoriaSerializer(data=data)
+		if serializerVistoria.is_valid():
+			print(serializerVistoria)
+			serializerVistoria.save()
+			return JsonResponse(serializerVistoria.data)
+		return JsonResponse(serializerVistoria.errors, status=400)

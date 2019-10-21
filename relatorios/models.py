@@ -4,7 +4,7 @@ from django.utils import timezone
 
 
 class Vistoria(models.Model):
-    autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    autor = models.ForeignKey(settings.AUTH_USER_MODEL, related_name = 'autor_id', on_delete=models.CASCADE)
 
     #tem como fazer com choice
     cobrad = models.CharField(max_length=200)
@@ -76,6 +76,8 @@ class Vistoria(models.Model):
     iah_fornecidos_outros_observacoes = models.TextField()
     iah_vias_publicas_totalmente_desobistruidas = models.BooleanField(default=False)
     iah_reestabelecimento_servicos_essenciais = models.BooleanField(default=False)
+    class Meta:
+        unique_together=['autor', 'data']
 
     def publish(self):
         self.save()
